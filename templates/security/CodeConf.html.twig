@@ -1,0 +1,292 @@
+{% extends '/base.html.twig' %}
+
+{% block header %}
+    <div class="site-wrap" id="home-section">
+
+        <div class="site-mobile-menu site-navbar-target">
+            <div class="site-mobile-menu-header">
+                <div class="site-mobile-menu-close mt-3">
+                    <span class="icon-close2 js-menu-toggle"></span>
+                </div>
+            </div>
+            <div class="site-mobile-menu-body"></div>
+        </div>
+
+
+
+
+        <header class="site-navbar site-navbar-target" role="banner">
+
+            <div class="container">
+                <div class="row align-items-center position-relative">
+
+                    <div class="col-3 ">
+                        <div class="site-logo">
+                            <a href="index.html">BeinSport</a>
+                        </div>
+                    </div>
+
+                    <div class="col-9  text-right">
+
+
+                        <span class="d-inline-block d-lg-none"><a href="#" class="text-white site-menu-toggle js-menu-toggle py-5 text-white"><span class="icon-menu h3 text-white"></span></a></span>
+
+
+
+                        <nav class="site-navigation text-right ml-auto d-none d-lg-block" role="navigation">
+                            <ul class="site-menu main-menu js-clone-nav ml-auto ">
+                                <li class="active"><a href="#" class="nav-link"></a></li>
+                                <li class="active"><a href="#" class="nav-link"></a></li>
+
+                                <li class="active"><a href="#" class="nav-link"></a></li>
+
+                                <li class="active"><a href="#" class="nav-link"></a></li>
+
+                                <li class="active"><a href="#" class="nav-link"></a></li>
+
+                                <li class="active"><a href="#" class="nav-link"></a></li>
+
+
+                                <li><a href="#" class="nav-link"></a></li>
+                                <li><a href="#" class="nav-link"></a></li>
+                                {% if app.user %}
+
+                                    <li class="nav-item dropdown nav-user">
+                                        <a href="#" data-toggle="dropdown" >{{ app.user.username }}</a>
+                                        <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" >
+
+                                            <a class="dropdown-item" href="{{ path('e',{'id':app.user.id}) }}">Mon compte</a>
+                                            {% if app.user.auth==1 %}
+                                                <a class="dropdown-item" href="{{ path('afficheuser') }}">Espace admin</a>
+                                            {% endif %}
+                                            <a class="m-nav__section m--hide">
+																	<span class="m-nav__section-text">
+
+																	</span>
+                                            </a>
+                                            <a class="dropdown-item" href="{{ path('app_logout') }}">Deconnexion</a>
+
+                                        </div>
+                                    </li>
+                                    <li>
+
+                                        <img src="{{ asset('uploads/images/' ~ app.user.image ) }}" style="border-radius: 4px;width: 30px;height: 30px;"  alt=""/>
+
+                                    </li>
+
+                                {% else %}
+
+                                    <li class="active"><a href="{{ path('app_login') }}" class="nav-link">Login</a></li>
+                                    <li class="active"><a href="{{ path('AjoutUser') }}" class="nav-link">Sign up</a></li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+                    </div>
+                    </ul>
+                    </nav>
+                </div>
+
+
+            </div>
+        </header></div>
+    </header>
+
+{% endblock %}
+{% block body %}
+    <style>@import url(https://fonts.googleapis.com/css?family=Exo:100,200,400);
+        @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
+
+        body{
+            margin: 0;
+            padding: 0;
+            background: #fff;
+
+            color: #fff;
+            font-family: Arial;
+            font-size: 12px;
+        }
+
+        .body{
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -40px;
+            bottom: -40px;
+            width: auto;
+            height: auto;
+            background-image: url(http://ginva.com/wp-content/uploads/2012/07/city-skyline-wallpapers-008.jpg);
+            background-size: cover;
+            -webkit-filter: blur(5px);
+            z-index: 0;
+        }
+
+        .grad{
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -40px;
+            bottom: -40px;
+            width: auto;
+            height: auto;
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.65))); /* Chrome,Safari4+ */
+            z-index: 1;
+            opacity: 0.7;
+        }
+
+        .header{
+            position: absolute;
+            top: calc(50% - 35px);
+            left: calc(50% - 255px);
+            z-index: 2;
+        }
+
+        .header div{
+            float: left;
+            color: #fff;
+            font-family: 'Exo', sans-serif;
+            font-size: 35px;
+            font-weight: 200;
+        }
+
+        .header div span{
+            color: #5379fa !important;
+        }
+
+        .login{
+            position: absolute;
+            top: calc(50% - 75px);
+            left: calc(50% - 50px);
+            height: 150px;
+            width: 350px;
+            padding: 10px;
+            z-index: 2;
+        }
+
+        .login input[type=text]{
+            width: 250px;
+            height: 30px;
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.6);
+            border-radius: 2px;
+            color: #fff;
+            font-family: 'Exo', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            padding: 4px;
+        }
+
+        .login input[type=password]{
+            width: 250px;
+            height: 30px;
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.6);
+            border-radius: 2px;
+            color: #fff;
+            font-family: 'Exo', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            padding: 4px;
+            margin-top: 10px;
+        }
+
+        .login input[type=button]{
+            width: 260px;
+            height: 35px;
+            background: #fff;
+            border: 1px solid #fff;
+            cursor: pointer;
+            border-radius: 2px;
+            color: #a18d6c;
+            font-family: 'Exo', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            padding: 6px;
+            margin-top: 10px;
+        }
+
+        .login input[type=button]:hover{
+            opacity: 0.8;
+        }
+
+        .login input[type=button]:active{
+            opacity: 0.6;
+        }
+
+        .login input[type=text]:focus{
+            outline: none;
+            border: 1px solid rgba(255,255,255,0.9);
+        }
+
+        .login input[type=password]:focus{
+            outline: none;
+            border: 1px solid rgba(255,255,255,0.9);
+        }
+
+        .login input[type=button]:focus{
+            outline: none;
+        }
+
+        ::-webkit-input-placeholder{
+            color: rgba(255,255,255,0.6);
+        }
+        .btn-primary{
+            display: inline-block;
+            background-color: #0B87A6;
+            border-radius: 10px;
+            border: 4px
+            #cccccc;
+            color: #eeeeee;
+            text-align: center;
+            font-size: 18px;
+            padding: 7px;
+            width: 100px;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .btn-primary span:after {
+            content: '\00bb';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+        }
+        .btn-primary:hover {
+            background-color: #f7c2f9;
+        }
+        .btn-primary:hover span {
+            padding-right: 25px;
+        }
+        .btn-primary:hover span:after {
+            opacity: 1;
+            right: 0;
+        }
+    </style>
+
+    <form method="POST" >
+
+        <div class="form-login">
+            <h2 class="text-center">Mot de passe oublié ?</h2>
+            <br>
+
+
+            <div class="body"></div>
+            <div class="grad"></div>
+            <div class="header">
+                <div>Site<span>Random</span></div>
+            </div>
+            <br>
+            <div class="login">
+                <h4>code de confirmationn</h4>
+                <input name="code" placeholder="code..."
+                       type="text" class="form-control"><br>
+                <a  href="{{ path('NewPw',{'idcl':user.idcl}) }}" class="btn-primary"> Recuperer</a>
+
+            </div>
+        </div>
+    </form>
+
+
+
+{% endblock %}

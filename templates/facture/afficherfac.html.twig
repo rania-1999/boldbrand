@@ -1,0 +1,70 @@
+{% extends '/back.html.twig' %}
+{% block content %}
+    <h1 top="50%"> Factures</h1>
+
+
+    <a href="{{ path('addFacture') }}" class="btn-primary"> <i class="fas fa-plus-circle"></i><span>ajouter </span></a>
+    <table class="styled-table">
+        <thead>
+        <tr>
+            <th>Name et prenom du client</th>
+            <th>date de creation</th>
+            <th>facture</th>
+            <th>download</th>
+            <th>modifier</th>
+            <th>supprimer</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="active-row" {% for e in Facture  %}>
+            <td>{{ e.client.nom }} {{ e.client.prenom }}</td>
+            <td>{{ e.datepost|date('Y-m-d') }}</td>
+
+            <td><a href="{{ asset('uploads/factures/' ~ e.facture)}}"  class="btn-primary"><i class="fas fa-eye"></i></a></td>
+            <td><a href="{{ asset('uploads/factures/' ~ e.facture)}}" class="btn-primary" > <i class="fas fa-download"></i></a></td>
+            <td><a href="{{ path ('updatefac',{'id':e.idf}) }}" class="btn-primary"><i class="fas fa-edit"></i></a></td>
+
+            <td><a href="{{ path ('deleteFac',{'id':e.idf}) }}" class="btn-primary"><i class="fas fa-trash-alt"></i></a></td>
+
+        </tr {% endfor %}>
+
+        <!-- and so on... -->
+        </tbody>
+    </table>
+    <style>
+        .styled-table {
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.9em;
+            font-family: sans-serif;
+            min-width: 400px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+        .styled-table thead tr {
+            background-color: #0B87A6;
+            color: #ffffff;
+            text-align: left;
+        }
+        .styled-table th,
+        .styled-table td {
+            padding: 12px 15px;
+        }
+        .styled-table tbody tr {
+            border-bottom: 1px solid #dddddd;
+        }
+
+        .styled-table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+
+        .styled-table tbody tr:last-of-type {
+            border-bottom: 2px solid #565656;
+        }
+        .styled-table tbody tr.active-row {
+            font-weight: bold;
+            color: #0B87A6;
+        }
+    </style>
+{% endblock %}
+

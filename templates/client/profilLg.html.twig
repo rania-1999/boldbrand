@@ -1,0 +1,21 @@
+{% extends '/in.html.twig' %}
+{% block content %}
+
+
+{% endblock %}
+{% block banner %}
+    <div class=" w-100 vh-100 d-flex justify-content-center align-items-center" >
+    <div class="content text-center">
+        <h1 class="text-white">Welcome</h1>
+
+        {% if logo.imglg==null %}
+            <h1 font-size="16px " class="textW"> aucun logo trouvé</h1>
+        {% endif %}
+        {% if logo.imglg!=null %}
+            <a href="{{ asset('uploads/images/' ~ logo.imglg)}}" >download logo </a>        {% endif %}
+<img src="  {{ asset('uploads/images/' ~ logo.imglg)}}">
+
+    </div>
+    </div>{% endblock %}
+
+

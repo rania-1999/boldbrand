@@ -1,0 +1,69 @@
+
+{% extends '/in.html.twig' %}
+{% block content %}
+
+
+{% endblock %}
+{% block banner %}
+    <div class=" w-100 vh-100 d-flex justify-content-center align-items-center" >
+    <div class="content text-center">
+        <h1 class="text-white">Welcome</h1>
+        {% if rec!=null%}
+            <h1> vos réclamations</h1>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">Obj</th>
+                    <th scope="col">Message</th>
+
+                    <th scope="col"></th>
+
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr  {% for rec in rec %}>
+                    <th scope="row" font-size="16px">{{ rec.obj }}</th>
+                    <td>{{ rec.obj }}</td>
+                    <td> <a href="{{ path('afficherrecD',{'id':rec.idrec}) }}" class="ah">see more</a></td>
+                </tr {% endfor %}>
+
+                </tbody>
+            </table>
+
+
+
+                {% endif %}
+                {% if rec==null %}
+                    <p>aucune Réclamation trouvée ajouter une si vous avez un problème</p>
+                {% endif %}
+                <a href="{{ path('addRec',{'id':app.user.idcl}) }}" class='ah'>Réclamer</a>
+            </div >
+
+<style>
+    body {
+        background-color: #fdfdfe;
+
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        text-align: center;
+        font-family: 'Open Sans', sans-serif;
+    }
+    .ah{
+        display: inline-block;
+        padding: 5px 7px;
+        background: #fff;
+        border-radius: 4px;
+        text-decoration: none;
+        color: #000;
+        font-weight: 500;
+        margin-top: 1px;
+        box-shadow: 0 2px 5px rgba(0,0,0,.2);
+    }
+</style>
+    </div>
+
+    </div>{% endblock %}
+

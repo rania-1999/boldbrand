@@ -1,0 +1,75 @@
+{% extends '/back.html.twig' %}
+{% block content %}
+    <h1 top="50%"> Details chartes</h1>
+<br>
+
+
+    <a href="{{ path('addChart') }}" class="btn-primary"> <i class="fas fa-plus-circle"></i><span> ajouter </span></a>
+<br>
+    <table class="styled-table">
+        <thead>
+        <tr>
+            <th>Name et prenom du client</th>
+            <th>date de creation</th>
+            <th>download</th>
+            <th>modifier</th>
+            <th>supprimer</th>
+            <th>associer une charte au client</th>
+ <th>notifier</th>
+        </tr>
+        </thead>
+        <tbody id="all">
+        <tr class="active-row" {% for e in chart  %}>
+            <td>{{ e.client.nom }} {{ e.client.prenom }}</td>
+            <td>{{ e.datecreation|date('Y-m-d') }}</td>
+
+            <td><a href="{{ asset('uploads/charts/' ~ e.docch)}}" class="btn-primary"><i class="fas fa-file-pdf"></i></a></td>
+            <td><a href="{{ path ('updateCh',{'id':e.idch}) }}" class="btn-primary"><i class="fas fa-edit"></i></a></td>
+
+            <td><a href="{{ path ('suppCh',{'id':e.idch}) }}" class="btn-primary" ><i class="fas fa-trash-alt"></i></a></td>
+            <td><a href="{{ path ('addCHartU',{'id':e.idch}) }}" class="btn-primary"><i class="fas fa-user-plus"></i></a></td>
+            <td><a href="{{ path ('notifier',{'id':e.idch}) }}" class="btn-primary"><i class="fas fa-bell"></i></a></td>
+
+        </tr {% endfor %}>
+
+        <!-- and so on... -->
+        </tbody>
+
+    </table>
+    <style>
+        .styled-table {
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.9em;
+            font-family: sans-serif;
+            min-width: 400px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+        .styled-table thead tr {
+            background-color: #0B87A6;
+            color: #ffffff;
+            text-align: left;
+        }
+        .styled-table th,
+        .styled-table td {
+            padding: 12px 15px;
+        }
+        .styled-table tbody tr {
+            border-bottom: 1px solid #dddddd;
+        }
+
+        .styled-table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+
+        .styled-table tbody tr:last-of-type {
+            border-bottom: 2px solid #565656;
+        }
+        .styled-table tbody tr.active-row {
+            font-weight: bold;
+            color: #0B87A6;
+        }
+    </style>
+
+
+{% endblock %}

@@ -1,0 +1,22 @@
+
+{% extends '/in.html.twig' %}
+{% block content %}
+
+
+{% endblock %}
+{% block banner %}
+    <div class=" w-100 vh-100 d-flex justify-content-center align-items-center" >
+    <div class="content text-center">
+        <h1 class="text-white">Welcome</h1>
+
+        {% if chart.docch==null %}
+            <h1 font-size="16px " class="textW"> aucune charte trouvée</h1>
+        {% endif %}
+        {% if chart.docch!=null %}
+            <a href="{{ asset('uploads/charts/' ~ chart.docch)}}" >download charte </a>
+        {% endif %}
+
+
+
+    </div>
+    </div>{% endblock %}

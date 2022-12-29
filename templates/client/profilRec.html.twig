@@ -1,0 +1,23 @@
+
+{% extends '/in.html.twig' %}
+{% block content %}
+
+
+{% endblock %}
+{% block banner %}
+    <div class=" w-100 vh-100 d-flex justify-content-center align-items-center" >
+    <div class="content text-center">
+        <h1 class="text-white">Welcome</h1>
+        {% if rec!=null%}
+            <h1> vos réclamations</h1>
+            <a href="{{ path('consulterrecCl',{'id':app.user.idcl}) }}">consulter</a>
+
+          
+{% endif %}
+        {% if rec==null %}
+            <p>aucune Réclamation trouvée ajouter une si vous avez un problème</p>
+        {% endif %}
+        <a href="{{ path('addRec',{'id':app.user.idcl}) }}">Réclamer</a>
+    </div>
+    </div>{% endblock %}
+

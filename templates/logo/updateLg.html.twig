@@ -1,0 +1,24 @@
+
+{% extends '/back.html.twig' %}
+{% block content %}
+
+    <div>
+    {{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
+
+    <h1 >
+        Modifier un logo
+    </h1>
+
+    <!--begin::Form-->
+    <!--ajoute1r un evenement-->
+
+    <div>
+
+        <div> {{ form_label(form.imglg,'Logo: ') }}</div>
+        {{ form_errors(form.imglg) }}
+        {{ form_widget(form.imglg) }}
+    </div>
+    <br>
+
+    {{ form_end(form) }}
+    </div>{% endblock %}

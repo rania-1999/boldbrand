@@ -1,0 +1,23 @@
+
+{% extends '/back.html.twig' %}
+{% block content %}
+
+    <div>
+    {{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
+
+    <h1 >
+        Modifier le client
+    </h1>
+
+    <!--begin::Form-->
+    <!--ajoute1r un evenement-->
+
+
+    <div>
+        <div>    {{ form_label(form.client,'client: ') }}</div>
+        {{ form_errors(form.client) }}
+        {{ form_widget(form.client) }}
+    </div>
+    {{ form_end(form) }}
+    </div>
+{% endblock %}

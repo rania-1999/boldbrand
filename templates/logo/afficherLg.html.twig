@@ -1,0 +1,33 @@
+{% extends '/back.html.twig' %}
+{% block content %}
+
+    <h1 top="50%">Logos</h1>
+<div class="mobile_nav_items">
+
+<a class="btn-primary" href="{{ path('addlogo') }} "><i class="fas fa-plus-circle"></i><span>ajouter </span></a>
+    <a class="btn-primary" href="{{ path('afficherlogoD') }}"><i class="fas fa-info-circle"></i><span>details</span></a>
+</div>
+
+    <div class="card" >
+
+
+
+            {% for e in logo  %}
+                <img alt="" src="{{ asset('uploads/images/' ~ e.imglg)}}" height="75px" width="75px">
+
+                <p><a href="{{ asset('uploads/images/' ~ e.imglg)}}" class="btn-primary"> <i class="fas fa-download"></i></a>
+
+                    <a href="{{ path ('updateLg',{'id':e.idlg}) }}" class="btn-primary"><i class="fas fa-edit"><span>modifier</span></i></a>
+
+                    <a href="{{ path ('deleteLg',{'id':e.idlg}) }}" class="btn-primary"><i class="fas fa-trash-alt"><span>supprimer</span></i></a>
+                </p>
+
+
+
+            {% endfor %}
+        </div >
+
+
+
+{% endblock %}
+

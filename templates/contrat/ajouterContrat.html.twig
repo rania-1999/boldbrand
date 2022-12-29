@@ -1,0 +1,27 @@
+{% extends '/back.html.twig' %}
+{% block content %}
+    <div>
+    {{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
+
+    <h1 >
+        Ajouter un contrat
+    </h1>
+
+    <!--begin::Form-->
+    <!--ajoute1r un evenement-->
+
+    <div>
+
+        <div> {{ form_label(form.docctr,'contrat: ') }}</div>
+        {{ form_errors(form.docctr) }}
+        {{ form_widget(form.docctr) }}
+    </div>
+    <br>
+
+    <div>
+        <div>    {{ form_label(form.client,'client: ') }}</div>
+        {{ form_errors(form.client) }}
+        {{ form_widget(form.client) }}
+    </div>
+    {{ form_end(form) }}
+    </div>{% endblock %}

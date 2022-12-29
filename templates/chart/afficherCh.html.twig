@@ -1,0 +1,30 @@
+{% extends '/back.html.twig' %}
+{% block content %}
+
+<h1 top="50%">Charte</h1>
+<div class="mobile_nav_items">
+
+    <a href="{{ path('addChart') }}" class="btn-primary"> <i class="fas fa-plus-circle"></i><span> ajouter </span></a>
+    <a class="btn-primary" href="{{ path('afficherChartD') }}"><i class="fas fa-info-circle"></i><span>details</span></a>
+
+</div>
+
+<div class="card" >
+
+    {% for e in chart  %}
+
+        <p>        <td><a href="{{ asset('uploads/charts/' ~ e.docch)}}" class="btn-primary"><i class="fas fa-download"></i></a></td>
+
+<span>{{ e.datecreation|date('Y-m-d') }}</span>
+        <a href="{{ path ('updateCh',{'id':e.idch}) }}" class="btn-primary">modifier</a>
+            <a href="{{ path ('suppCh',{'id':e.idch}) }}" class="btn-primary">supprimer</a>        </p>
+
+
+
+    {% endfor %}
+</div >
+
+
+
+{% endblock %}
+

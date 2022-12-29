@@ -1,0 +1,99 @@
+
+{% extends '/in.html.twig' %}
+{% block content %}
+
+
+{% endblock %}
+{% block banner %}
+    <div class=" w-100 vh-100 d-flex justify-content-center align-items-center" >
+    <div class="content text-center">
+        <div class="glass-panel">
+            <h2>objet: {{ rec.obj}}</h2>
+            <h2>message: {{ rec.msg }}</h2>
+            {% if rec.response==null  %}
+                <h2>Réponse: aucune réponse ajoutée</h2>
+            {% endif %}
+            {% if rec.response!=null  %}
+
+                <h2>Réponse:{{ rec.response }}</h2>
+            {% endif %}
+            <div class="glass-toolbar">
+                <a href="{{ path('addRec',{'id':app.user.idcl}) }}" class="glass-button">Réclamer</a>
+              </div>
+        </div>
+<style>
+    .glass-panel {
+        color: #fff;
+        margin: 40px auto;
+        background-color: rgba(255,255,255,0.06);
+        border: 1px solid rgba(255,255,255,0.1);
+        width: 100%;
+        border-radius: 15px;
+        padding: 32px;
+        backdrop-filter: blur(10px);
+    }
+
+    .glass-button {
+        display: inline-block;
+        padding: 24px 32px;
+        border: 0;
+        text-decoration: none;
+        border-radius: 15px;
+        background-color: rgba(255,255,255,0.1);
+        border: 1px solid rgba(255,255,255,0.1);
+        backdrop-filter: blur(30px);
+        color: rgba(255,255,255,0.8);
+        font-size: 14px;
+        letter-spacing: 2px;
+        cursor: pointer;
+        text-transform: uppercase;
+    }
+
+    .glass-button:hover {
+        background-color: rgba(255,255,255,0.2);
+    }
+
+    /* Extra styles for demo */
+    /* Article:  https://superdevresources.com/glassmorphism-ui-css/ */
+    body {
+        background: url(http://blog.colorado-groupe.com/wp-content/uploads/sites/2/2018/09/conseils-ameliorer-fidelisation-vos-clients-F-1080x675.jpg) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        text-align: center;
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    .glass-panel {
+        max-width: 600px;
+    }
+
+    .glass-button {
+        margin: 15px;
+        margin-top: 40px;
+    }
+
+    h1, h1 a {
+        min-height: 120px;
+        width: 90%;
+        max-width: 700px;
+        vertical-align: middle;
+        text-align: center;
+        margin: 0 auto;
+        text-decoration: none;
+        color: #fff;
+        padding-top: 60px;
+        color: rgba(255,255,255,0.8);
+    }
+
+    p {
+        width: 80%;
+        margin: 0 auto;
+        padding-bottom: 32px;
+        color: rgba(255,255,255,0.6);
+    }
+</style>
+    </div>
+    </div>{% endblock %}
+

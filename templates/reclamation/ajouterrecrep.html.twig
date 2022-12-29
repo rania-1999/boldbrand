@@ -1,0 +1,32 @@
+
+
+{% extends '/back.html.twig' %}
+{% block content %}
+    <div class=" w-100 vh-100 d-flex justify-content-center align-items-center" >
+    <div class="content text-center">
+
+
+        <div>
+            {{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
+
+            <h1 >
+                Répondre à une Reclamation
+            </h1>
+
+            <!--begin::Form-->
+            <!--ajoute1r un evenement-->
+
+            <div>
+
+                <div> {{ form_label(form.response,'Reponse: ') }}</div>
+                {{ form_errors(form.response) }}
+                {{ form_widget(form.response) }}
+            </div>
+
+            {{ form_end(form) }}
+        </div>
+
+
+    </div>
+    </div>{% endblock %}
+

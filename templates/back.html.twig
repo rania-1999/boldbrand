@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    {% block head %}
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dashboard</title>
+    <link rel="stylesheet" href="{{ asset('css/style.css')}}">
+        <link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
+        <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet'>
+        <script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+    {% endblock %}
+
+</head>
+<body>
+
+<input type="checkbox" id="check">
+<!--header area start-->
+<header>
+    <label for="check">
+        <i class="fas fa-bars" id="sidebar_btn-primary"></i>
+    </label>
+    <div class="left_area">
+        <h3>Coding <span>Snow</span></h3>
+    </div>
+    <div class="right_area">
+        <a href="{{ path('app_logout') }}" class="logout_btn">Logout</a>
+    </div>
+</header>
+<!--header area end-->
+<!--mobile navigation bar start-->
+<div class="mobile_nav">
+    <div class="nav_bar">
+        {% if app.user.auth==1 %}
+        <img src="{{ asset('uploads/images/user.png')}}" class="mobile_profile_image"  alt=""/>
+        <i class="fa fa-bars nav_btn-primary"></i>
+        {% endif %}
+    </div>
+    <div class="mobile_nav_items">
+        <a href=""><i class="fas fa-desktop"></i><span>Dashboard</span></a>
+        <a href="{{ path('afficherCL') }}"><i class="fas fa-user"></i><span>Clients</span></a>
+        <a href="{{ path('afficherlogo') }}"><i class="fas fa-smile"></i><span>Logos</span></a>
+        <a href="{{ path('afficherChartD') }}"><i class="fas fa-chart-pie"></i><span>Chartes</span></a>
+        <a href="{{ path('afficherFacture') }}"><i class="fas fa-dollar-sign"></i><span>Factures</span></a>
+        <a href="{{ path('afficherContrat') }}"><i class="fas fa-file-signature"></i><span>Contrats</span></a>
+        <a href="{{ path('afficherrec') }}"><i class="fas fa-paste"></i><span>Reclamations</span></a>
+        <a href="#"><i class="fas fa-comments"></i><span>Commentaires</span></a>
+
+    </div>
+</div>
+<!--mobile navigation bar end-->
+<!--sidebar start-->
+<div class="sidebar">
+    <div class="profile_info">
+    <img  src="{{ asset('uploads/images/' ~ app.user.image)}}" class="profile_image" alt="">
+        <h4>{{ app.user.nom }} {{ app.user.prenom }}</h4>
+    </div>
+    <a href="{{ path('admin') }}"><i class="fas fa-desktop"></i><span>Dashboard</span></a>
+    <a href="{{ path('afficherCL') }}"><i class="fas fa-user"></i><span>Clients</span></a>
+    <a href="{{ path('afficherlogo') }}"><i class="fas fa-smile"></i><span>Logos</span></a>
+    <a href="{{ path('afficherChartD') }}"><i class="fas fa-chart-pie"></i><span>Chartes</span></a>
+    <a href="{{ path('afficherFacture') }}"><i class="fas fa-dollar-sign"></i><span>Factures</span></a>
+    <a href="{{ path('afficherContrat') }}"><i class="fas fa-file-signature"></i><span>Contrats</span></a>
+    <a href="{{ path('afficherrec') }}"><i class="fas fa-paste"></i><span>Reclamations</span></a>
+    <a href="#"><i class="fas fa-comments"></i><span>Commentaires</span></a>
+<style >
+
+    .sidebar .profile_info .profile_image{
+        width: 100px;
+        height: 100px;
+        border-radius: 100px;
+        margin-bottom: 10px;
+    }
+</style>
+
+</div>
+<!--sidebar end-->
+
+<div class="content">
+{% block content %}
+
+    <!-- Flashy depends on jQuery -->
+    <script src="//code.jquery.com/jquery.js"></script>
+    <!-- Load Flashy default JavaScript -->
+    <script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
+    <!-- Include Flashy default partial -->
+    {% endblock %}
+    {{ include('@MercurySeriesFlashy/flashy.html.twig') }}
+
+</div>
+{% block script %}
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.nav_btn-primary').click(function(){
+            $('.mobile_nav_items').toggleClass('active');
+        });
+    });
+</script>
+{% endblock %}
+</body>
+</html>

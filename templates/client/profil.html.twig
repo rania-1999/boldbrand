@@ -1,0 +1,134 @@
+
+{% extends '/in.html.twig' %}
+{% block content %}
+
+
+
+<div class="container">
+    <div class="box">
+        <div class="icon">01</div>
+        <div class="contentH">
+            <h3>Logo</h3>
+            <p> vous pouvez consultez votre logo </p>
+            <a href="{{ path('afficherClLogo',{'id':app.user.idcl}) }}"  class="ah">cliquez ici</a>
+        </div></div>
+    <div class="box">
+        <div class="icon">02</div>
+        <div class="contentH">
+            <h3>Charte</h3>
+            <p> vous pouvez consultez votre charte </p>
+            <a href="{{ path('afficherClCh',{'id':app.user.idcl}) }}"  class="ah">cliquez ici</a>
+        </div></div>
+
+    <div class="box">
+        <div class="icon">02</div>
+        <div class="contentH">
+            <h3>Reclamation</h3>
+            <p> vous pouvez ajouter une réclamation </p>
+            <a href="{{ path('afficherrecCl',{'id':app.user.idcl}) }}"  class="ah">cliquez ici</a>
+        </div></div>
+
+    </div>
+    <style>
+        .container{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .container .box{
+            position: relative;
+            width: 350px;
+            padding: 40px;
+            background: #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,.1);
+            border-radius: 4px;
+            margin: 20px;
+            box-sizing:border-box;
+            overflow: hidden;
+            text-align: center;
+        }
+        .container .box .icon{
+            position: relative;
+            width: 80px;
+            height: 80px;
+            color: #fff;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            border-radius: 50%;
+            font-size:40px ;
+            font-weight: 700;
+            transition: 1s;
+
+        }
+        .container .box:nth-child(1) .icon
+        {
+            box-shadow: 0 0 0 0 #e91e63;
+            background:#e91e63 ;
+        }  .container .box:nth-child(1):hover .icon
+           {
+               box-shadow: 0 0 0 400px #e91e63;
+
+           } .container .box:nth-child(2) .icon
+             {
+                 box-shadow: 0 0 0 0 #0B87A6;
+                 background:#0B87A6 ;
+             }  .container .box:nth-child(2):hover .icon
+                {
+                    box-shadow: 0 0 0 400px #0B87A6;
+
+                }
+        .container .box:nth-child(3) .icon
+        {
+            box-shadow: 0 0 0 0 #6610f2;
+            background:#6610f2 ;
+        }  .container .box:nth-child(3):hover .icon
+           {
+               box-shadow: 0 0 0 400px #6610f2;
+
+           }
+           .container .box .contentH {
+               position: relative;
+               z-index: 1;
+               transition: 0.5s;
+           }
+        .container .box:hover .contentH {
+          color: #fff;
+        }
+        .container .box .contentH h3 {
+            font-size: 20px;
+            margin: 10px 0;
+            padding: 0;
+        }
+        .container .box .contentH p {
+            margin: 0;
+            padding: 0;
+
+        }
+        .ah{
+            display: inline-block;
+            padding: 10px 20px;
+            background: #fff;
+            border-radius: 4px;
+            text-decoration: none;
+            color: #000;
+            font-weight: 500;
+            margin-top: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,.2);
+        }
+        .container .box:before{
+            content: '';
+            width: 50%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: rgba(255,255,255,.2);
+            z-index: 2;
+            pointer-events: none;
+        }
+    </style>
+
+{% endblock %}

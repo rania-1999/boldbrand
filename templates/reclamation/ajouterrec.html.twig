@@ -1,0 +1,38 @@
+
+{% extends '/in.html.twig' %}
+{% block banner %}
+    <div class=" w-100 vh-100 d-flex justify-content-center align-items-center" >
+    <div class="content text-center">
+
+
+        <div>
+            {{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
+
+            <h1 >
+                Ajouter une Reclamation
+            </h1>
+
+            <!--begin::Form-->
+            <!--ajoute1r un evenement-->
+
+            <div>
+
+                <div> {{ form_label(form.obj,'Objet: ') }}</div>
+                {{ form_errors(form.obj) }}
+                {{ form_widget(form.obj) }}
+            </div>
+            <br>
+            <div>
+                <div>    {{ form_label(form.msg,'message: ') }}</div>
+                {{ form_errors(form.msg) }}
+                {{ form_widget(form.msg) }}
+            </div>
+            {{ form_end(form) }}
+        </div>
+
+
+    </div>
+    </div>{% endblock %}
+
+{% block content %}
+{% endblock %}

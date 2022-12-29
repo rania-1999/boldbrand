@@ -1,0 +1,83 @@
+{% extends '/back.html.twig' %}
+{% block content %}
+    <h1 top="50%"> Contrats</h1>
+
+
+    <a href="{{ path('addContrat') }}" class="btn-primary"> <i class="fas fa-plus-circle"></i><span>contrat </span></a>
+    <a href="{{ path('addContratBN') }}" class="btn-primary" > <i class="fas fa-plus-circle"></i><span>Bon livraison </span></a>
+
+    <table class="styled-table">
+        <thead>
+        <tr>
+            <th>Name et prenom du client</th>
+            <th>date de creation</th>
+            <th>contrat</th>
+            <th>Bon de livraison</th>
+
+            <th>modifier un contrat</th>
+            <th>modifier un bon de livraison</th>
+            <th>supprimer</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="active-row" {% for e in contrat  %}>
+            <td>{{ e.client.nom }} {{ e.client.prenom }}</td>
+            <td>{{ e.datepost|date('Y-m-d') }}</td>
+{% if e.docctr==null %}
+            <td><p>vous n'avez pas encore ajouté un contrat</p><a href="{{ path ('updateContrat',{'id':e.idctr}) }}" class="btn-primary"><i class="fas plus-circle"></i></a> </td>
+{% elseif e.docctr!=null %}
+            <td><a href="{{ asset('uploads/contracts/' ~ e.docctr)}}"  class="btn-primary"> <i class="fas fa-download"></i></a></td>
+          {% endif %}
+           {% if e.docbonliv==null %}
+               <td> <p>vous n'avez pas ajouté un bon de livraison</p><a href="{{ path ('updateContratBn',{'id':e.idctr}) }}" class="btn-primary"><i class="fas plus-circle"></i></a> </td>
+
+           {% elseif e.docbonliv!=null %}
+               <td><a href="{{ asset('uploads/contracts/' ~ e.docbonliv)}}"  class="btn-primary"> <i class="fas fa-download"></i></a></td>
+
+           {% endif %}
+            <td><a href="{{ path ('updateContrat',{'id':e.idctr}) }}" class="btn-primary"><i class="fas fa-edit"></i></a></td>
+            <td><a href="{{ path ('updateContratBn',{'id':e.idctr}) }}" class="btn-primary"><i class="fas fa-edit"></i></a></td>
+
+            <td><a href="{{ path ('deleteContrat',{'id':e.idctr}) }}" class="btn-primary"><i class="fas fa-trash-alt"></i></a></td>
+
+        </tr {% endfor %}>
+
+        <!-- and so on... -->
+        </tbody>
+    </table>
+    <style>
+        .styled-table {
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.9em;
+            font-family: sans-serif;
+            min-width: 400px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+        .styled-table thead tr {
+            background-color: #0B87A6;
+            color: #ffffff;
+            text-align: left;
+        }
+        .styled-table th,
+        .styled-table td {
+            padding: 12px 15px;
+        }
+        .styled-table tbody tr {
+            border-bottom: 1px solid #dddddd;
+        }
+
+        .styled-table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+
+        .styled-table tbody tr:last-of-type {
+            border-bottom: 2px solid #565656;
+        }
+        .styled-table tbody tr.active-row {
+            font-weight: bold;
+            color: #0B87A6;
+        }
+    </style>
+{% endblock %}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+        {% block head %}
+        <title>CSS Navigation</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/styleF.css')}}">
+{% endblock %}
+</head>
+<body>
+<div id="abc">
+        <nav>
+                <ul>
+                        {% if app.user.auth==1 %}
+                                <li> <a class="dropdown-item" href="{{ path('admin') }}">Espace admin</a></li>
+                        {% endif %}
+                        <li><a href="{{ path('afficherClLogo',{'id':app.user.idcl}) }}">Logo</a></li>
+                        <li><a href="{{ path('afficherClCh',{'id':app.user.idcl}) }}">Chart</a></li>
+                        <li><a href="{{ path('afficherClContrat',{'id':app.user.idcl}) }}">Airways</a></li>
+                        <li><a href="{{ path('afficherClfacture',{'id':app.user.idcl}) }}">Book Tickets</a></li>
+                        <li><a href="{{ path('addRec',{'id':app.user.idcl}) }}">Reclamation</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                </ul>
+        </nav>
+</div>
+
+<div class="container">
+        {% block content %}
+        {% endblock %}
+</div>
+{% block script %}
+
+        <script type="text/javascript">
+                $(document).ready(function(){
+                        $('.nav_btn-primary').click(function(){
+                                $('.mobile_nav_items').toggleClass('active');
+                        });
+                });
+        </script>
+{% endblock %}
+</body>
+</html>

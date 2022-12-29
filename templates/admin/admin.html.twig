@@ -1,0 +1,12 @@
+
+{% extends '/back.html.twig' %}
+{% block content %}
+    <div class="card" >
+    <p><a href="{{ path('afficherCL') }}" >gestion client</a></p>
+    <p><a href="{{ path('afficherlogo') }}">gestion logo</a></p>
+    <p><a href="{{ path('afficherChartD') }}">gestion chart</a></p>
+    <p><a href="{{ path('afficherContrat') }}">gestion contrat</a></p>
+    <p><a href="{{ path('afficherFacture') }}">gestion facture</a></p>
+    <p><a href="{{ path('afficherrec') }}">gestion reclamation</a></p>
+    </div>
+{% endblock %}

@@ -1,0 +1,27 @@
+
+{% extends '/in.html.twig' %}
+{% block content %}
+
+
+{% endblock %}
+{% block banner %}
+    <div class=" w-100 vh-100 d-flex justify-content-center align-items-center" >
+        <div class="content text-center">
+            <h1 class="text-white">Welcome</h1>
+
+            {% if contrat.docctr==null %}
+                <h1 font-size="16px " class="textW"> aucun contrat trouvé</h1>
+            {% endif %}
+            {% if contrat.docctr!=null %}
+                <a href="{{ asset('uploads/contracts/' ~ contrat.docctr)}}" >download contrat </a>
+            {% endif %}
+            {% if contrat.docbonliv==null %}
+                <h1 font-size="16px " class="textW"> aucun bon de livraison trouvé</h1>
+            {% endif %}
+            {% if contrat.docbonliv!=null %}
+                <a href="{{ asset('uploads/contracts/' ~ contrat.docbonliv)}}" >download bon de livraison </a>
+            {% endif %}
+
+
+        </div>
+    </div>{% endblock %}

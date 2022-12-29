@@ -1,0 +1,27 @@
+
+{% extends '/back.html.twig' %}
+{% block content %}
+    <div>
+    {{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
+
+    <h1 >
+        Ajouter une charte
+    </h1>
+
+    <!--begin::Form-->
+    <!--ajoute1r un evenement-->
+
+    <div>
+
+        <div> {{ form_label(form.docch,'chart: ') }}</div>
+        {{ form_errors(form.docch) }}
+        {{ form_widget(form.docch) }}
+    </div>
+<br>
+    <div>
+        <div>    {{ form_label(form.client,'client: ') }}</div>
+        {{ form_errors(form.client) }}
+        {{ form_widget(form.client) }}
+    </div>
+    {{ form_end(form) }}
+    </div>{% endblock %}

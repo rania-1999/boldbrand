@@ -1,0 +1,22 @@
+
+{% extends '/in.html.twig' %}
+{% block content %}
+
+
+{% endblock %}
+{% block banner %}
+    <div class=" w-100 vh-100 d-flex justify-content-center align-items-center" >
+    <div class="content text-center">
+        <h1 class="text-white">Welcome</h1>
+
+        {% if facture.facture==null %}
+            <h1 font-size="16px " class="textW"> aucune facture trouvée</h1>
+        {% endif %}
+        {% if facture.facture!=null %}
+            <a href="{{ asset('uploads/factures/' ~ facture.facture)}}" >download facture </a>
+        {% endif %}
+
+
+    </div>
+    </div>{% endblock %}
+
